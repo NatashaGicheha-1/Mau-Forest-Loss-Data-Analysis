@@ -1,7 +1,10 @@
-#A)Find a relevant dataset
-#1)Load dataset
+#1)Data Collection
+#Load dataset
 MauForest=read.csv("C:\\Users\\T2Gic\\Downloads\\Project on ENV2001, STA and Differential Equations\\Mau Forest.csv")
 head(MauForest)
+
+#Understand dataset
+str(MauForest)
 
 #2) Clean dataset 
 #a)Count duplicate rows, outliers and missing values  
@@ -48,17 +51,17 @@ sum(duplicated(MauForest))
 
 #ii)Outliers - Cap outliers for Forest Loss only
 for (col in "Forest_Loss_ha") {
-MauForest[[col]] <- ifelse(
-  MauForest[[col]] > upper, upper,
-  ifelse(MauForest[[col]] < lower, lower, MauForest[[col]])
-)
-
-# AFTER
-outliers_after <- MauForest[[col]][
-  MauForest[[col]] < lower | MauForest[[col]] > upper
-]
-
-cat("Outliers AFTER -", col, ":", length(outliers_after), "\n")
+  MauForest[[col]] <- ifelse(
+    MauForest[[col]] > upper, upper,
+    ifelse(MauForest[[col]] < lower, lower, MauForest[[col]])
+  )
+  
+  # AFTER
+  outliers_after <- MauForest[[col]][
+    MauForest[[col]] < lower | MauForest[[col]] > upper
+  ]
+  
+  cat("Outliers AFTER -", col, ":", length(outliers_after), "\n")
 }
 
 #iii) Missing Values - Replace missing values with median
@@ -75,7 +78,6 @@ for (col in numeric_cols) {
   
 }
 
-#B)Mathematical model
 #Standard deviation
 sd(MauForest$Population)
 sd(MauForest$Forest_Loss_ha)
@@ -84,16 +86,20 @@ sd(MauForest$Forest_Loss_ha)
 cor(MauForest$Population, MauForest$Forest_Loss_ha)
 #The correlation between population and forest loss was found to be very weak (r = 0.00849), indicating that population alone does not strongly explain variations in forest loss in Mau Forest. This suggests that other factors such as agricultural expansion and settlement growth may play a more significant role.
 
-#Multiple Linear Regression model
-model <- lm(
-  Forest_Loss_ha ~ Population + Agricultural_Expansion_ha + Settlement_Expansion_ha,
-  data = MauForest
+#Correlation Analysis of all variables
+cor_matrix <- cor(
+  MauForest[, c(
+    "Forest_Loss_ha",
+    "Population",
+    "Agricultural_Expansion_ha",
+    "Settlement_Expansion_ha",
+    "Year"
+  )]
 )
-summary(model)
-
+cor_matrix
 
 #3.Visualizations
-# Define where to save folder for Visualization
+# Define where to save folder for Visualizations
 folder_path <- "C:\\Users\\T2Gic\\Downloads\\Project on ENV2001, STA and Differential Equations\\Images"
 
 # Create folder 
@@ -138,4 +144,54 @@ plot(
   col = "red"
 )
 dev.off()
+
+#4)Model building
+#Multiple Linear Regression model
+# Install and Load package
+install.packages("caret")
+library(caret)
+
+# Set seed for reproducibility
+set.seed(123)
+
+# Split data: 80% training, 20% testing
+train_index <- createDataPartition(
+  MauForest$Forest_Loss_ha,
+  p = 0.8,
+  list = FALSE
+)
+
+train_data <- MauForest[train_index, ]
+test_data  <- MauForest[-train_index, ]
+
+# Train model
+model <- lm(
+  Forest_Loss_ha ~ Population +
+    Agricultural_Expansion_ha +
+    Settlement_Expansion_ha +
+    Population_Growth_.,
+  data = train_data
+)
+
+# Model summary
+summary(model)
+
+# Predictions on test set
+predictions <- predict(model, newdata = test_data)
+
+# Evaluation metrics
+rmse <- sqrt(mean((test_data$Forest_Loss_ha - predictions)^2))
+mae  <- mean(abs(test_data$Forest_Loss_ha - predictions))
+r2   <- cor(test_data$Forest_Loss_ha, predictions)^2
+
+cat("RMSE:", rmse, "\n")
+cat("MAE :", mae, "\n")
+cat("R²  :", r2, "\n")
+
+#Future improvements
+#ii)Machine Learning Modeling
+#Random Forest
+
+#iii)Mathematical Modeling
+#Differential Equations
 
