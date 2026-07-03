@@ -60,8 +60,9 @@
 
 ## Multiple Linear Regression Model
 ### Summary of the Model.
-  <img width="458" height="250" alt="image" src="https://github.com/user-attachments/assets/9799340c-0c9b-4acd-89f1-9311b307e229" />
-  
+### After splitting the dataset into training set and testing set
+<img width="428" height="260" alt="image" src="https://github.com/user-attachments/assets/d0fd5d16-161d-4cab-bf6b-e56146ef91a3" />
+
   * A multiple linear regression model was used to examine how population growth, agricultural expansion, and settlement expansion affect forest loss in the Mau Forest.
   * The model is given by: F = 3329 + 7.213×10−6P + 8.811×10−4A + 1.102×10−3S
   * Where:
@@ -130,28 +131,37 @@
 * The data is highly scattered, indicating weak or inconsistent relationship.
 * The graph suggests that agricultural expansion alone does not strongly explain forest loss in the Mau Forest.
 
+  ## Conclusion
+* This study shows that population growth alone does not strongly explain forest loss in the Mau Forest.
+* Using 3 more variables in the regression model still lead to a low predictive power.
+* After splitting the dataset into training and testing sets,little change is seen, no variable significantly predicts forest loss.
+
 ## Limitations
 * Regression Model has low explanatory power (R²)
+* Low Correlation between variables
 * Dataset is simulated, not real-world.
 
 ## Current Improvements
-* 1.Checked relevance of my dataset by comparing it with my friend's Environment Studies assignment, more specifically on Deforestation as a cause of Environmental Degradation.
-* 2.Took more time to understand the dataset and the cleaning process.
-* 3.Created visualisations before model building instead of after.
-* 4.Checked correlations using all variables instead of just one variable.
-* 5.Dataset is split into training and testing sets for better analysis.
-* 6.The model is then trained on the training data and evaluated on the testing data for better analysis.
-* All changes done in Analysis.Changes file
-  
-## Future Work
-* Use more models and compare results.
-* Use different types of modeling and compare results.
-* Use real-world environmental datasets.
- 
-## Conclusion
-* This study shows that population growth alone does not strongly explain forest loss in the Mau Forest.
-* Using 3 more variables in the regression model still lead to a low predictive power.
+* Checked relevance of my dataset by comparing it with my friend's Environment Studies assignment, used the part on on Deforestation as a cause of Environmental Degradation.
+* Took more time to understand the dataset and the cleaning process.
+* Created visualisations before model building instead of after.
+* Checked correlations using all variables instead of just one variable.
+* Dataset is split into training and testing sets before building the model.
+* The model is trained on the training data and evaluated on the testing data for better analysis.
+* Created a project folder in R for Analysis file.
+* Made changes to mu Analysis file in the project folder and pushed the changes to Github.
 
+## Future Work
+* Use more models such as Random Forest model and compare results.
+* Use different types of modeling such as Mathematical Modeling and Statistical Modelling,compare results.
+* Consider changing the dataset used or the target variable.
+* README file should be in different languages such as Kiswahili and Chinese(Mandarin)
+* Have an audio file for the README file.
+* Provide a version of the clean dataset.
+* Sync Analysis file to Github, make changes easily implemented on Github.
+* Be able to change image sizes.
+* Write down the skills you have gained in this project.
+ 
 ## Attachments
 * Images folder containing the 3 visualizations
 * Analysis.R file showing my analysis of the simulated Mau Forest dataset.
