@@ -1,4 +1,4 @@
-# A Simulated Study Of How Population Growth Affects Forest Loss in Mau Forest:Kenya
+# Impact of Population Growth on Forest Loss in Mau Forest using Machine Learning and Mathematical Modelling Approach
 ## Overview
 * This project explores how population growth affects forest loss in the Mau Forest, Kenya.
 *  Using a simulated dataset, the study applies multiple linear regression, differential equations, and data visualization in R to analyze relationships between population dynamics and environmental degradation.
@@ -27,8 +27,10 @@
 * I became excited on combining Mathematics, Environmental Studies and Statisticss.
 * This is also my first math centered project so I am very excited.
 
+----------
 --------------
-# 1)Machine Learning
+
+# 1)Machine Learning Approach
 ## Dataset
 <img width="839" height="137" alt="image" src="https://github.com/user-attachments/assets/a8a57245-a44e-46ac-94f4-f42c35e3d072" />
 
@@ -41,6 +43,8 @@
     * Population growth % - Percentage increase in population
       
  * Due to lack of a complete real-world dataset, simulation was used to approximate realistic patterns.
+
+-------------
 
 ## Clean the dataset 
 * Mau Forest dataset was cleaned to ensure accuracy and reliability before analysis.
@@ -63,15 +67,9 @@
 * The median is less affected by extreme values and provides a more robust estimate of the central value..
 * No missing values remained in the dataset after cleaning.
 
+------------------
 
-
-
-* Assuming the variables remain constant: dF/dt=k
-    * k = constant rate of forest loss
-* Integrating gives: F(t) = kt + C
-    * C = initial forest condition
-
-## Visualizations
+## Visualisations
 ### 1.Population vs Forest Loss 
 ### (Scatter Plot with a regression (trend) line)
 <img width="480" height="480" alt="population_vs_forest_loss" src="https://github.com/user-attachments/assets/d3d24341-fd3f-467b-9dcb-5cd1008bbaf0" />
@@ -113,7 +111,7 @@
 <img width="428" height="260" alt="image" src="https://github.com/user-attachments/assets/d0fd5d16-161d-4cab-bf6b-e56146ef91a3" />
 
   * A multiple linear regression model was used to examine how population growth, agricultural expansion, and settlement expansion affect forest loss in the Mau Forest.
-  * The model is given by: F = 3329 + 7.213×10−6P + 8.811×10−4A + 1.102×10−3S
+  * The model is given by: **F = 3329 + 7.213×10−6P + 8.811×10−4A + 1.102×10−3S**
   * Where:
       *  F = Forest Loss
       *  P = Population
@@ -125,46 +123,35 @@
   * The model has a very low R^2, meaning it explains very little variation in forest loss.
   * This suggests that forest loss is influenced by other factors not included in the model.
 
+## Limitations of Machine Learning Approach
+* Regression Model has low explanatory power (R²)
+* Low Correlation between variables
+* Dataset is simulated, not real-world.
+  
 ----------------------------
-# 2)Mathematical Modelling
+# 2)Mathematical Modelling Approach
 * Show how environmental systems can be represented mathematically.
 * Connect environmental science with Differential Equations.
 
-  ## Differential Equations
-* Differential Equations was  used to represent forest loss as a dynamic process changing over time showing how changes in human activities influence the rate of forest depletion..
-* The model was written as: dF/dt= 7.213×10−6P + 8.811×10−4A + 1.102×10−3S
+## Differential Equations
+### i)Population Growth 
+dP/dt=rP
+
 * Where:
-    * F = Forest Loss
-    * P = Population
-    * A = Agricultural Expansion
-    * S = Settlement Expansion
-    * dF/dt = rate of change of forest loss over time
-
-* The equation dF/dt= 7.213×10−6P + 8.811×10−4A + 1.102×10−3S shows that forest loss changes depending on population, agricultural expansion, and settlement growth
-  
-### Population Growth Model
-$$
-\frac{dP}{dt}=rP
-$$
-Where:
-
-* P = Population
-* t = Time
-* r = Population growth rate
+  * P = Population
+  * t = Time
+  * r = Population growth rate
 
 ### Explanation
-This fifferential equation states that the rate of population growth is proportional to the current population size.
+This differential equation states that the rate of population growth is proportional to the current population size.
 
 ### Solution
-\[
-P(t)=P_0e^{rt}
-\]
+P(t)=P_0e^rt
 
-Where:
-
-* \(P_0\) = Initial population
-* \(r\) = Growth rate
-* \(t\) = Time
+* Where:
+  * P_0 = Initial population
+  * r = Growth rate.
+  * t = Time
 
 ### Interpretation
 * As population increases, the demand for land, housing, fuelwood, and agriculture may increase.
@@ -172,26 +159,10 @@ Where:
 
 ---
 
-## Relationship Between Population Growth and Forest Loss ////////
-
-Explain:
-
-* Growing populations require more agricultural land.
-* Human settlements expand over time.
-* Increased demand for natural resources can accelerate forest depletion.
-
-This section connects the mathematics to the real-world environmental problem.
-
----
-
-# Forest Loss Differential Equation
-
-\[
-\frac{dF}{dt}=kP
-\]
+### ii)Forest Loss 
+dF/dt=kP
 
 Where:
-
 * F = Forest Loss
 * P = Population
 * k = Forest conversion coefficient
@@ -199,47 +170,33 @@ Where:
 ### Explanation
 This model assumes that forest loss changes according to population size.
 
----
-
-# Forest Loss Differential Equation Solved
+### Solution
 Substitute:
-$$
-P = P_0 e^{rt}
-$$
+P = P_0 e^rt
 
 Resulting in:
-$$
-\frac{dF}{dt} = kP_0 e^{rt}
-$$
+dF/dt = kP_0 e^rt
 
 Integrate:
-$$
-F(t) = \frac{kP_0}{r} e^{rt} + C
-$$
+F(t) = kP_0/r e^rt + C
 
-Where:
-
-* C = Initial forest condition
+Where C = Initial forest condition
 
 ### Interpretation
 The model predicts that forest loss will increase as population grows over time.
 
 ---
 
-# Population Growth Simulation in R
+## Population Growth Simulation in R
 
 <img width="408" height="218" alt="image" src="https://github.com/user-attachments/assets/e157971b-26b8-4170-bb34-d27d4810613e" />
 
-## Explanation of findings
+### Explanation
 * The graph shows a continuous increase in population over the 50-year period.
 * The population starts at approximately 100,000 people and grows to more than 400,000 people by Year 50.
 * The curve becomes steeper as time increases, indicating that population growth is accelerating rather than increasing at a constant rate.
 * This pattern is characteristic of exponential growth, which is described by the differential equation:
-
-\[
-\frac{dP}{dt}=rP
-\]
-
+* **dP/dt=rP**
 * The model assumes that the rate of population growth is proportional to the current population size.
 * As the population becomes larger, the annual increase in population also becomes larger, causing the curve to rise more rapidly.
 * In the context of the Mau Forest ecosystem, continued population growth may increase demand for agricultural land, settlement expansion, fuelwood, and other natural resources.
@@ -247,11 +204,11 @@ The model predicts that forest loss will increase as population grows over time.
 * The simulation demonstrates how differential equations can be used to study long-term population dynamics and their potential environmental impacts.
 ---
 
-# Step 8: Simulate Forest Loss in R
+## Forest Loss Simulationin R
 
 <img width="401" height="218" alt="image" src="https://github.com/user-attachments/assets/cd21e2da-a670-48a0-be96-7aa80bc7797b" />
 
-## Explanation of findings
+### Explanation
 ### Trends Observed
 * The graph shows a continuous increase in forest loss over the 50-year period.
 * Forest loss starts at approximately 3,300 units and increases to more than 14,000 units by Year 50.
@@ -275,298 +232,63 @@ The model predicts that forest loss will increase as population grows over time.
 * The model demonstrates that small increases in population pressure today can result in substantially greater forest loss in the future because the effect accumulates over time.
 ---
 
-# Compare Exact and Numerical Solutions
+## Limitations of the Mathematical Modelling Approach
+* The model assumes that population growth is the main cause of forest loss, yet deforestation is also influenced by factors such as illegal logging, climate change, conservation efforts, and government policies.
 
-Create a section:
+* The analysis is based on simulated data rather than real Mau Forest data, meaning the results may not accurately represent actual conditions in the forest.
 
-```markdown
-## Comparing Solutions
-```
+* The model assumes that population growth follows a constant growth rate over time. In reality, population growth rates can change due to social, economic, and environmental factors.
 
-Compare:
+* The model only focuses on the relationship between population growth and forest loss, ignoring other important variables such as agricultural expansion and settlement growth.
 
-### Analytical Solution
+* The predictions are based on assumptions and should not be interpreted as exact forecasts of future forest loss.
 
-Advantages:
+* The model does not consider where forest loss occurs within Mau Forest and treats the entire forest as a single system.
 
-* Exact
-* Based on calculus
+* As the simulation projects further into the future, uncertainty increases and the results become less reliable.
 
-Limitations:
+--------------
 
-* Not always possible for complex models
-
----
-
-# Step 12: Perform Correlation Analysis
-
-Before regression analysis:
-
-Create:
-
-```markdown
-## Correlation Analysis
-```
-
-Include:
-
-* Correlation Matrix
-* Heatmap
-
-Investigate:
-
-* Population vs Forest Loss
-* Agriculture vs Forest Loss
-* Settlement Expansion vs Forest Loss
-
-Explain what the correlations mean.
-
----
-
-# Step 13: Improve the Regression Analysis
-
-Keep your Multiple Linear Regression section.
-
-Clearly explain:
-
-\[
-F = 3329 + 7.213\times10^{-6}P + 8.811\times10^{-4}A + 1.102\times10^{-3}S
-\]
-
-Discuss:
-
-* Significance of variables
-* R² value
-* Model limitations
-
-------------
-**NB: regression and differential equations are two separate approaches.**
-
----
-
-# Compare Results of Regression and Differential Equations
-|Regression|Differential Equations|
-|----------|-----------------------|
-
+# Comparison of Regression and Differential Equations
+| Aspect | Multiple Linear Regression | Differential Equation Model |
+|----------|----------|----------|
+| Purpose | Examines the relationship between population, agricultural expansion, settlement expansion, and forest loss. | Models how forest loss changes continuously over time as population grows. |
+| Model | F = 3329 + 7.213×10⁻⁶P + 8.811×10⁻⁴A + 1.102×10⁻³S | dF/dt = kP |
+| Variables Used | Population, Agricultural Expansion, Settlement Expansion | Population and Time |
+| Approach | Statistical Modelling | Mathematical Modelling |
+| Data Requirement | Requires historical data for model training. | Can be used to simulate future scenarios using assumptions. |
+| Main Finding | Population has a statistically significant but very small effect on forest loss. Agricultural and settlement expansion were not statistically significant. | Forest loss increases as population grows over time, producing an accelerating trend in forest depletion. |
+| Predictive Power | Low R² indicates the model explains very little variation in forest loss. | Demonstrates theoretical long-term behaviour under assumed growth conditions. |
+| Visual Evidence | Scatter plots showed weak relationships between variables and forest loss. | Population and forest loss simulations showed exponential growth patterns. |
+| Interpretation | The available variables do not strongly explain forest loss in the simulated dataset. | Continuous population growth can lead to increasing rates of forest loss over time. |
+| Strengths | Data-driven and based on observed values. | Captures dynamic change and allows future forecasting. |
+| Limitations | Low explanatory power and weak variable relationships. | Depends on assumptions and simulated parameters. |
+| Conclusion | Population growth alone is a weak predictor of forest loss in the simulated dataset. | Population growth may contribute to accelerating forest loss when viewed as a continuous process over time. |
 
 ----------------------------
-# 3)Statistical Modelling
 
-### Multiple Linear Regression
-
-Advantages
-
-* Data-driven
-* Simple interpretation
-
-Limitations
-
-* Weak predictive power
-* Depends heavily on data quality
-
-## Mathematical Model
-
-### Differential Equations
-
-Advantages
-
-* Models continuous change
-* Allows simulation of future scenarios
-
-Limitations
-
-* Requires assumptions
-* Simplifies reality
-
----
-
-# Step 15: Add Scenario Analysis
-
-Create:
-
-```markdown
-# Scenario Analysis
-```
-
-Compare three population growth rates.
-
-## Scenario 1: Low Growth
-
-\[
-r=0.01
-\]
-
-## Scenario 2: Moderate Growth
-
-\[
-r=0.03
-\]
-
-## Scenario 3: High Growth
-
-\[
-r=0.05
-\]
-
-Create graphs for each scenario.
-
-Discuss:
-
-* Future population
-* Predicted forest loss
-* Environmental consequences
-
----
-
-# Step 16: Improve the Dataset Section
-
-Expand the Dataset section to include:
-
-## Why Simulate Data?
-
-* Lack of complete real-world data.
-* Need to demonstrate mathematical modeling concepts.
-
-## Assumptions Used
-
-* Population grows steadily.
-* Agricultural expansion increases with population.
-* Forest loss responds to human pressure.
-
-## Limitations
-
-* Simulated data cannot fully capture real-world complexity.
-* Results should be interpreted as an educational exercise.
-
----
-
-# Step 17: Improve the Conclusion
-
-Replace the current conclusion with a stronger one.
-
-Example:
-
-> The regression analysis suggests that population growth alone is a weak predictor of forest loss in the simulated dataset. However, the differential equation model demonstrates how continuous population growth can contribute to increasing rates of forest depletion over time. Combining statistical and mathematical approaches provides deeper insight into environmental change and supports better understanding of long-term ecosystem dynamics.
-
----
-
-# Step 18: Add a Skills Gained Section
-
-```markdown
-# Skills Gained
-```
-
-## Mathematics
-
-* Differential Equations
-* Exponential Growth Models
-* Integration
-* Mathematical Modelling
-* Euler's Method
-
-## Statistics
-
-* Correlation Analysis
-* Multiple Linear Regression
-* Model Evaluation
-
-## Programming
-
-* R Programming
-* Data Visualization
-* Simulation
-
-## Environmental Analytics
-
-* Forest Loss Analysis
-* Population Dynamics
-* Sustainability Assessment
-
----
-
-# Step 19: Add Future Work
-
-Update the Future Work section.
-
-Possible additions:
-
-* Use real-world Mau Forest datasets.
-* Apply Logistic Growth Models.
-* Test Random Forest Regression.
-* Compare R and Python implementations.
-* Include GIS and spatial analysis.
-* Develop Partial Differential Equation models.
-* Predict future forest cover under different conservation policies.
-
----
-
-# Final Deliverables
-
-By the end of the project, you should have:
-
-✅ Cleaned dataset
-
-✅ Correlation analysis
-
-✅ Multiple linear regression model
-
-✅ Population growth differential equation
-
-✅ Forest loss differential equation
-
-✅ Analytical solution
-
-✅ Euler's Method implementation
-
-✅ Population simulation graphs
-
-✅ Forest loss simulation graphs
-
-✅ Scenario analysis
-
-✅ Regression vs Differential Equation comparison
-
-✅ Environmental interpretation
-
-✅ Skills gained section
-
-✅ Improved conclusion
-
-✅ Future work roadmap
-
-
-
-## Limitations
-* Regression Model has low explanatory power (R²)
-* Low Correlation between variables
-* Dataset is simulated, not real-world.
-
-## Current Improvements ~ Make a table
-* Checked relevance of my dataset by comparing it with my friend's Environment Studies assignment, used the part on on Deforestation as a cause of Environmental Degradation.
-* Took more time to understand the dataset and the cleaning process.
-* Created visualisations before model building instead of after.
-* Checked correlations using all variables instead of just one variable.
-* Dataset is split into training and testing sets before building the model.
-* The model is trained on the training data and evaluated on the testing data for better analysis.
-* Created a project folder in R for Analysis file.
-* Made changes to mu Analysis file in the project folder and pushed the changes to Github.
-
-## Future Work
-* Use more models such as Random Forest model and compare results.
-* Use different types of modeling such as Mathematical Modeling and Statistical Modelling,compare results.
-* Consider changing the dataset used or the target variable.
-* README file should be in different languages such as Kiswahili and Chinese(Mandarin)
-* Have an audio file for the README file.
-* Provide a version of the clean dataset.
-* Sync Analysis file to Github, make changes easily implemented on Github.
-* Be able to change image sizes.
-* Write down the skills you have gained in this project.
-
+# Comparison of Current and Future Improvements 
+|Current Improvements|Future Improvements|
+|--------------------|-------------------|
+|Checked relevance of my dataset by comparing it with my friend's Environment Studies assignment.|Use more models in Machine Learning such as Random Forest model and compare results with regression model.|
+|Took more time to understand the dataset and the cleaning process.|Add Statistical Modelling and compare results with Machine Learning and Mathematical Modelling.|
+|Created visualisations before model building instead of after.|Write README file in multiple languages such as Kiswahili and Chinese(Mandarin) for a wider audience.|
+|Checked correlation using all variables instead of just one variable.|Have an audio file for the README file to cater for everyone.|
+|Split dataset into training and testing sets before building the model.| Provide a version of the clean dataset.|
+|Trained the multiple linear regression model on training data only.|Be able to change image sizes.|
+|Evaluated on the testing data for better analysis.|Write down skills  gained in this project.|
+|Created a project folder in R for Analysis file.||
+|Made changes to Analysis file in the project folder and pushed the changes to Github.||
+|Added mathematical modelling to the project.||
+|Enhanced application of Differential Equations to project||
+
+-----------------------
 
 ## Attachments
 * Images folder containing the 3 visualizations
 * Analysis.R file showing my analysis of the simulated Mau Forest dataset.
 * Individual Assignment docx showing IMPACT OF POPULATION GROWTH AND HUMAN-INDUCED DEVELOPMENT ACTIVITIES ON ENVIRONMENTAL DEGRADATION:SUSTAINABLE APPROACHES AGAINST THE VICE GIVING RELEVANT EXAMPLES FROM MY COUNTRY
+
 
 
 
