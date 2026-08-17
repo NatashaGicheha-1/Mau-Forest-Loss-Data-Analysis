@@ -46,7 +46,7 @@
 
 -------------
 
-## Clean the dataset 
+## Clean the dataset using R
 * Mau Forest dataset was cleaned to ensure accuracy and reliability before analysis.
 * Key areas looked into were Duplicate Rows, Outliers and Missing Values.
 * A total of 5000 duplicate rows were identified and removed.
@@ -68,6 +68,19 @@
 * No missing values remained in the dataset after cleaning.
 
 ------------------
+## Clean the dataset in excel
+|Original|Clean version|
+|---------|-------------|
+|<img width="551" height="287" alt="image" src="https://github.com/user-attachments/assets/145bd125-b899-40ca-a52f-c17d035024a3" /> | |
+
+### Problems encountered
+* Missing values (blank cells).
+* Duplicate records.
+* Missing Year values.
+* Negative values in fields that should normally be non-negative (e.g., Forest Loss, Agricultural Expansion, Settlement Expansion).
+* Possible outliers (e.g., very large Forest Loss values such as 33,771 ha).
+* Inconsistent formatting of Year (stored as 2003.0 instead of 2003)
+
 
 ## Visualisations
 ### 1.Population vs Forest Loss 
