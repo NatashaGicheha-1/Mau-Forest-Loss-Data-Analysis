@@ -194,4 +194,32 @@ cat("R²  :", r2, "\n")
 
 #iii)Mathematical Modeling
 #Differential Equations
+#Population Growth Simulation
+year <- 0:50
+P0 <- 100000
+r <- 0.03
 
+population <- P0*exp(r*year)
+
+plot(year,
+     population,
+     type="l",
+     main="Population Growth in 50 years",
+     xlab="Year",
+     ylab="Population",
+     col="darkgreen",
+     lwd=2) 
+
+# Forest Loss
+k <- 0.001
+
+forest_loss <- (k*P0/r)*exp(r*year)
+
+plot(year,
+     forest_loss,
+     type="l",
+     main="Forest Loss in 50 years",
+     xlab="Year",
+     ylab="Forest Loss",
+     col="darkgreen",
+     lwd=2)
