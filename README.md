@@ -46,7 +46,7 @@
 
 -------------
 
-## Clean the dataset using R
+## Clean the dataset in R
 * Mau Forest dataset was cleaned to ensure accuracy and reliability before analysis.
 * Key areas looked into were Duplicate Rows, Outliers and Missing Values.
 * A total of 5000 duplicate rows were identified and removed.
@@ -71,16 +71,26 @@
 ## Clean the dataset in excel
 |Original|Clean version|
 |---------|-------------|
-|<img width="551" height="287" alt="image" src="https://github.com/user-attachments/assets/145bd125-b899-40ca-a52f-c17d035024a3" /> | |
+|<img width="678" height="283" alt="image" src="https://github.com/user-attachments/assets/1c05932f-5535-4bcf-8600-ed30c57e9102" />|<img width="602" height="276" alt="image" src="https://github.com/user-attachments/assets/ee84b0a9-965e-405c-bc62-1716e850a04e" />|
 
-### Problems encountered
-* Missing values (blank cells).
-* Duplicate records.
-* Missing Year values.
-* Negative values in fields that should normally be non-negative (e.g., Forest Loss, Agricultural Expansion, Settlement Expansion).
-* Possible outliers (e.g., very large Forest Loss values such as 33,771 ha).
-* Inconsistent formatting of Year (stored as 2003.0 instead of 2003)
+----------
+### Data cleaning process in excel
+| Challenge Encountered | Description | Solution Applied |
+|----------------------|-------------|------------------|
+| Missing Year Values | Several records had blank values in the `Year` column, making it impossible to identify the time period for those observations. | Filtered the `Year` column for blanks and deleted rows with missing year values. |
+| Duplicate Years | Multiple records existed for the same year, resulting in more than one observation per year. | Created a PivotTable and aggregated records by calculating the average of all numerical variables for each year. |
+| Exact Duplicate Records | Some rows contained identical values across all columns. | Used Excel's **Data → Remove Duplicates** feature to eliminate exact duplicates. |
+| Year = 0 Appearing in PivotTable | A year value of `0` appeared in the PivotTable, indicating invalid or incorrectly entered data. | Investigated the source data, corrected or removed invalid year entries, and refreshed the PivotTable. |
+| Blank Category in PivotTable | A `(blank)` category appeared in the PivotTable due to missing values in the `Year` field. | Removed records with missing years and refreshed the PivotTable to eliminate the blank category. |
+| Multiple Simulation Records Per Year | The simulated dataset contained several observations for the same year. | Aggregated duplicate years using the mean of all numerical variables to obtain a single annual record. |
+| Population Values Showing Decimals | Averaging multiple records produced population values with decimal places. | Formatted the Population column to display whole numbers with a thousands separator. |
+| PivotTable Header Naming Issues | Excel prevented renaming PivotTable fields to names already existing in the dataset. | Copied the PivotTable results and pasted them as values into a new worksheet before renaming headers. |
+| Difficulty Selecting and Deleting Filtered Rows | Blank-year rows were scattered throughout the dataset and difficult to remove manually. | Applied filters to display only blank rows and deleted all visible filtered rows simultaneously. |
+| Dataset Structure Not Clearly Defined | It was unclear whether duplicate years represented errors, simulations, or multiple observations. | Reviewed the project objective and decided to create one aggregated observation per year for modeling purposes. |
+| Multiple Sheets After Cleaning | The workbook contained original data, PivotTable results, and cleaned data sheets. | Saved the final cleaned dataset separately as a CSV file for GitHub upload and machine learning analysis. |
+| GitHub Synchronization Issues | Local changes could not be pushed because the remote repository contained newer commits. | Pulled updates from GitHub, completed the merge, and then successfully pushed changes. |
 
+------------------
 
 ## Visualisations
 ### 1.Population vs Forest Loss 
@@ -120,6 +130,8 @@
 * The data is highly scattered, indicating weak or inconsistent relationship.
 * The graph suggests that agricultural expansion alone does not strongly explain forest loss in the Mau Forest.
 
+------------------
+
 ## Multiple Linear Regression Model
 <img width="428" height="260" alt="image" src="https://github.com/user-attachments/assets/d0fd5d16-161d-4cab-bf6b-e56146ef91a3" />
 
@@ -136,12 +148,15 @@
   * The model has a very low R^2, meaning it explains very little variation in forest loss.
   * This suggests that forest loss is influenced by other factors not included in the model.
 
+-----------------------------
 ## Limitations of Machine Learning Approach
 * Regression Model has low explanatory power (R²)
 * Low Correlation between variables
 * Dataset is simulated, not real-world.
   
 ----------------------------
+-------------------
+
 # 2)Mathematical Modelling Approach
 * Show how environmental systems can be represented mathematically.
 * Connect environmental science with Differential Equations.
@@ -247,17 +262,11 @@ The model predicts that forest loss will increase as population grows over time.
 
 ## Limitations of the Mathematical Modelling Approach
 * The model assumes that population growth is the main cause of forest loss, yet deforestation is also influenced by factors such as illegal logging, climate change, conservation efforts, and government policies.
-
 * The analysis is based on simulated data rather than real Mau Forest data, meaning the results may not accurately represent actual conditions in the forest.
-
 * The model assumes that population growth follows a constant growth rate over time. In reality, population growth rates can change due to social, economic, and environmental factors.
-
 * The model only focuses on the relationship between population growth and forest loss, ignoring other important variables such as agricultural expansion and settlement growth.
-
 * The predictions are based on assumptions and should not be interpreted as exact forecasts of future forest loss.
-
 * The model does not consider where forest loss occurs within Mau Forest and treats the entire forest as a single system.
-
 * As the simulation projects further into the future, uncertainty increases and the results become less reliable.
 
 --------------
